@@ -1,0 +1,112 @@
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: 'Lato', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+header {
+  height: 10vh;
+}
+/* current weather */
+.search-form {
+  margin: 20px 20px;
+}
+
+.searchbox {
+  padding: 10px 20px;
+  background-color: var(--text-color);
+  max-width: 480px;
+  margin: 0px auto;
+  border-radius: 3px;
+}
+
+.search {
+  width: 100%;
+  background-color: var(--text-color);
+  border: none;
+  font-size: 1rem;
+}
+
+.search:focus {
+  outline: none;
+}
+
+.weather-card {
+  margin: 20px 20px;
+  background: var(--text-color);
+  color: var(--bg-color);
+  padding: 20px;
+  text-align: center;
+  border-radius: 3px;
+  display: none;
+}
+
+.city {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.date {
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+
+.temperature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.temp-img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.temp {
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.weather {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+/*finish current weather */
+
+
+
+#daily_con, #hour_con {
+  height: 30vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border: solid 1px;
+}
+#daily_con div, #hour_con div {
+  height: 25vh;
+  width: 20vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(197, 198, 198, 0.95);
+  margin: 0 2% 0 2%;
+}
+
+#con_wea {
+  height: 30vh;
+  border: solid 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 18px;
+}/*# sourceMappingURL=index.css.map */
