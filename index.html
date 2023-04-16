@@ -6,54 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="index.css">
-    <script type="module" src="index.js"></script>
 </head>
 <body>
-    <div class="main_sec">
-        <div class="header">
-            <header id="header_in">
-                <input type="text" id="city-input">
-                <button onclick="searchCity()">Search</button>
-                <div id="city-info"></div>
-            </header>
-            <div class="select_city"></div>
-            <div class="search_bar"></div>
-        </div>
-        <div class="container">
-            <div id="current_wea">
-                <h2>current Weather</h2>
-                <div id="con_wea">
-                    <div>City Name</div>
-                    <i id="icon_curren" href=""></i>
-                    <h2>c#</h2>
-                    <div class="con_info">
-                        <div>Weather info</div>
-                    </div>
+<video autoplay muted loop id="bg-video">
+    <source src="./media/montanas-59291.mp4" type="video/mp4">
+</video>
+<div class="main_sec">
+
+    <div class="header">
+        <header id="header_in">
+            <input type="text" id="city-input">
+            <button onclick="searchCity()">Search</button>
+            <div id="city-info"></div>
+        </header>
+        <div class="select_city"></div>
+        <div class="search_bar"></div>
+    </div>
+    <div class="container">
+        <div id="current_wea">
+            <h2>current Weather</h2>
+            <div id="con_wea">
+                <div>City Name</div>
+                <i id="icon_curren" href=""></i>
+                <h2>c#</h2>
+                <div class="con_info">
+                    <div>Weather info</div>
                 </div>
             </div>
-            <div id="daily_fore">
-                <h2>Daily Forecast - 5 days</h2>
-                <div id="daily_con">
-                <div>Day1</div>
-                <div>Day2</div>
-                <div>Day3</div>
-                <div>Day4</div>
-                <div>Day5</div>
+        </div>
+        <div id="daily_fore">
+            <h2>Daily Forecast - 5 days</h2>
+            <div id="daily_con">
+                <div id="Day1">Day 1</div>
+                <div id="Day2">Day 2</div>
+                <div id="Day3">Day 3</div>
+                <div id="Day4">Day 4</div>
+                <div id="Day5">Day 5</div>
             </div>
             <div id="hour_ran">
                 <h2>3 hour gap</h2>
                 <div id="hour_con">
-                <div>0-3</div>
-                <div>3-6</div>
-                <div>6-9</div>
-                <div>9-12</div>
-                <div>12-15</div>
-                <div>15-18</div>
-                <div>18-21</div>
-                <div>21-0</div>
+                    <div id="0-3"></div>
+                    <div id="3-6"></div>
+                    <div id="6-9"></div>
+                    <div id="9-12"></div>
+                    <div id="12-15"></div>
+                    <div id="15-18"></div>
+                    <div id="18-21"></div>
+                    <div id="21-24"></div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<script src="index.js"></script>
 </body>
 </html>
