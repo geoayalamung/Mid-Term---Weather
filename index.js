@@ -1,7 +1,7 @@
 let WEATHER_API_KEY = '2276fd31f84ab4e336dd35dc2ebebbcc';
 
 function mode(array) {
-    if (array.length == 0)
+    if (array.length === 0)
         return null;
     var modeMap = {};
     var maxEl = array[0], maxCount = 1;
@@ -68,33 +68,39 @@ async function searchCity() {
             }
             dayArray.pop();
             //the next 8 three hours forecast
-           /*  for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 8; i++) {
 
                 data.list[i].main.temp = Math.round(data.list[i].main.temp * 100) / 100
-                document.getElementById(`${i * 3}-${(i + 1) * 3}`).innerHTML = `<img src=\"https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" width=\"60px\" height=\"60px\"> <br>` + JSON.stringify((({temp,feels_like}) => ({temp,feels_like}))(data.list[i].main));
+                document.getElementById(`${i * 3}-${(i + 1) * 3}`).innerHTML = `<img src=\"https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" width=\"60px\" height=\"60px\"> <br>` + JSON.stringify((({
+                                                                                                                                                                                                                                  temp,
+                                                                                                                                                                                                                                  feels_like
+                                                                                                                                                                                                                              }) => ({
+                    temp,
+                    feels_like
+                }))(data.list[i].main));
             }
- */
-            //the next 5 days forecast
 
-//the next 5 days forecast
-let min_temp = daysInfoArray[0][0].main.temp;
-let max_temp = daysInfoArray[0][0].main.temp;
-for (let i = 0; i < 5; i++) {
-    weather_array = [];
-    ave_temp = 0;
-    for (let j = 0; j < daysInfoArray[i].length; j++) {
-        weather_array.push(daysInfoArray[i][j].weather[0].icon);
-        ave_temp += daysInfoArray[i][j].main.temp;
-        if (daysInfoArray[i][j].main.temp < min_temp) {
-            min_temp = daysInfoArray[i][j].main.temp;
-        }
-        if (daysInfoArray[i][j].main.temp > max_temp) {
-            max_temp = daysInfoArray[i][j].main.temp;
-        }
-    }
-    ave_temp = (ave_temp / daysInfoArray[i].length).toFixed(1);
-    icon = mode(weather_array)
-    document.getElementById(`Day${i + 1}`).innerHTML = `<img src=\"https://openweathermap.org/img/wn/${icon}@2x.png" width=\"60px\" height=\"60px\"> <br>`
-     + `April: ${dayArray[i]} <br>Ave temp: ${ave_temp}°C<br>Min: ${min_temp}°C <br>Max.: ${max_temp}°C`;
+
+            //the next 5 days forecast
+            let min_temp = daysInfoArray[0][0].main.temp;
+            let max_temp = daysInfoArray[0][0].main.temp;
+            for (let i = 0; i < 5; i++) {
+                weather_array = [];
+                ave_temp = 0;
+                for (let j = 0; j < daysInfoArray[i].length; j++) {
+                    weather_array.push(daysInfoArray[i][j].weather[0].icon);
+                    ave_temp += daysInfoArray[i][j].main.temp;
+                    if (daysInfoArray[i][j].main.temp < min_temp) {
+                        min_temp = daysInfoArray[i][j].main.temp;
+                    }
+                    if (daysInfoArray[i][j].main.temp > max_temp) {
+                        max_temp = daysInfoArray[i][j].main.temp;
+                    }
+                }
+                ave_temp = (ave_temp / daysInfoArray[i].length).toFixed(1);
+                icon = mode(weather_array)
+                document.getElementById(`Day${i + 1}`).innerHTML = `<img src=\"https://openweathermap.org/img/wn/${icon}@2x.png" width=\"60px\" height=\"60px\"> <br>`
+                    + `April: ${dayArray[i]} <br>Ave temp: ${ave_temp}°C<br>Min: ${min_temp}°C <br>Max.: ${max_temp}°C`;
+            }
+        })
 }
-        })}
