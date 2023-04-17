@@ -10,10 +10,15 @@ body {
 
 #bg-video {
   position: fixed;
-  right: 0;
-  bottom: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   min-width: 100%;
   min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  margin: 0 2% 0 2%;
 }
 
 header {
@@ -25,12 +30,12 @@ header {
   flex-direction: column;
   margin: 5%;
   padding-bottom: 0;
-
   @media only screen and (max-width: 768px) {
-    margin: 0;
-    padding-bottom: 5%;
+    .main_sec {
+      margin: 0;
+      padding-bottom: 5%;
+    }
   }
-
 }
 
 #daily_con,
@@ -44,11 +49,13 @@ header {
   border: 5px solid rgb(47, 60, 78);
   border-radius: 10px;
   margin: 0 2% 0 2%;
-
   @media only screen and (max-width: 768px) {
-    height: auto;
-    flex-wrap: wrap;
-    font-size: 16px;
+    #daily_con,
+    #hour_con {
+      height: auto;
+      flex-wrap: wrap;
+      font-size: 16px;
+    }
   }
 }
 
@@ -63,12 +70,14 @@ header {
   color: #000;
   margin: 0 2% 0 2%;
   font-size: 20px;
-
   @media only screen and (max-width: 768px) {
-    height: 15vh;
-    width: 45%;
-    margin: 0 1% 5% 1%;
-    font-size: 14px;
+    #daily_con div,
+    #hour_con div {
+      height: 15vh;
+      width: 45%;
+      margin: 0 1% 5% 1%;
+      font-size: 14px;
+    }
   }
 }
 
@@ -80,9 +89,11 @@ header {
   border-radius: 10px;
   align-items: center;
   @media only screen and (max-width: 768px) {
-    height: auto;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    #con_wea {
+      height: auto;
+      padding-top: 5%;
+      padding-bottom: 5%;
+    }
   }
 }
 

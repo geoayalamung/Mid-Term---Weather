@@ -23,11 +23,6 @@ body {
   margin: 0 2% 0 2%;
 }
 
-#bg-video source {
-  src: url("montana.mp4");
-  type: video/mp4;
-}
-
 header {
   height: 10vh;
 }
@@ -39,7 +34,7 @@ header {
   padding-bottom: 0;
 }
 @media only screen and (max-width: 768px) {
-  .main_sec {
+  .main_sec .main_sec {
     margin: 0;
     padding-bottom: 5%;
   }
@@ -58,8 +53,10 @@ header {
   margin: 0 2% 0 2%;
 }
 @media only screen and (max-width: 768px) {
-  #daily_con,
-  #hour_con {
+  #daily_con #daily_con,
+  #daily_con #hour_con,
+  #hour_con #daily_con,
+  #hour_con #hour_con {
     height: auto;
     flex-wrap: wrap;
     font-size: 16px;
@@ -79,8 +76,10 @@ header {
   font-size: 20px;
 }
 @media only screen and (max-width: 768px) {
-  #daily_con div,
-  #hour_con div {
+  #daily_con div #daily_con div,
+  #daily_con div #hour_con div,
+  #hour_con div #daily_con div,
+  #hour_con div #hour_con div {
     height: 15vh;
     width: 45%;
     margin: 0 1% 5% 1%;
@@ -93,12 +92,11 @@ header {
   border: solid 5px;
   display: flex;
   flex-direction: column;
-  border: 5px solid rgb(47, 60, 78);
   border-radius: 10px;
   align-items: center;
 }
 @media only screen and (max-width: 768px) {
-  #con_wea {
+  #con_wea #con_wea {
     height: auto;
     padding-top: 5%;
     padding-bottom: 5%;
@@ -112,4 +110,6 @@ h2 {
   flex-direction: column;
   align-items: center;
   font-family: "Montserrat", sans-serif;
-}/*# sourceMappingURL=index.css.map */
+}
+
+/*# sourceMappingURL=index.css.map */

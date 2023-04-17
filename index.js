@@ -1,6 +1,6 @@
 let WEATHER_API_KEY = '2276fd31f84ab4e336dd35dc2ebebbcc';
 
-function mode(array) {
+function findMode(array) {
     if (array.length === 0)
         return null;
     var modeMap = {};
@@ -19,6 +19,13 @@ function mode(array) {
     return maxEl;
 }
 
+const cityInput = document.getElementById('city-input');
+cityInput.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        searchCity().then(r => console.log(r));
+    }
+});
+
 async function searchCity() {
     let longitude;
     let latitude;
@@ -29,16 +36,10 @@ async function searchCity() {
     await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${WEATHER_API_KEY}`)
         .then(response => response.json())
         .then(data => {
-            const cityName = data.name;
-            const cityTemp = data.main.temp;
-            const cityInfo = `City: ${cityName}<br>Temperature: ${cityTemp}°F`;
-            //document.getElementById("city-info").innerHTML = cityInfo;
-
             longitude = data.coord.lon;
             latitude = data.coord.lat;
             timezone = data.timezone;
             country = data.sys.country;
-
         })
         .catch(error => {
             console.error("Error fetching city information:", error);
@@ -67,17 +68,12 @@ async function searchCity() {
                 }
             }
             dayArray.pop();
+
             //the next 8 three hours forecast
             for (let i = 0; i < 8; i++) {
-
-                data.list[i].main.temp = Math.round(data.list[i].main.temp * 100) / 100
-                document.getElementById(`${i * 3}-${(i + 1) * 3}`).innerHTML = `<img src=\"https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" width=\"60px\" height=\"60px\"> <br>` + JSON.stringify((({
-                                                                                                                                                                                                                                  temp,
-                                                                                                                                                                                                                                  feels_like
-                                                                                                                                                                                                                              }) => ({
-                    temp,
-                    feels_like
-                }))(data.list[i].main));
+                data.list[i].main.temp = Math.round(data.list[i].main.temp * 100) / 100;
+                data.list[i].main.humidity = Math.round(data.list[i].main.humidity * 100) / 100;
+                document.getElementById(`${i * 3}-${(i + 1) * 3}`).innerHTML = `${i * 3}-${(i + 1) * 3} h<img src=\"https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" width=\"60px\" height=\"60px\" alt="weather logo"> <p> ${data.list[i].main.temp}°C</p> <p> ${data.list[i].main.humidity}%</p>`;
             }
 
 
@@ -98,9 +94,9 @@ async function searchCity() {
                     }
                 }
                 ave_temp = (ave_temp / daysInfoArray[i].length).toFixed(1);
-                icon = mode(weather_array)
+                icon = findMode(weather_array)
                 document.getElementById(`Day${i + 1}`).innerHTML = `<img src=\"https://openweathermap.org/img/wn/${icon}@2x.png" width=\"60px\" height=\"60px\"> <br>`
-                    + `April: ${dayArray[i]} <br>Ave temp: ${ave_temp}°C<br>Min: ${min_temp}°C <br>Max.: ${max_temp}°C`;
+                    + `April: ${dayArray[i]} <br>Ave temp: ${ave_temp}°C<br>Min: ${min_temp}°C <br>Max: ${max_temp}°C`;
             }
         })
 }
