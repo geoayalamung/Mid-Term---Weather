@@ -40,8 +40,7 @@ header {
   }
 }
 
-#daily_con,
-#hour_con {
+#daily_con, #hour_con {
   height: 30vh;
   display: flex;
   flex-direction: row;
@@ -53,18 +52,14 @@ header {
   margin: 0 2% 0 2%;
 }
 @media only screen and (max-width: 768px) {
-  #daily_con #daily_con,
-  #daily_con #hour_con,
-  #hour_con #daily_con,
-  #hour_con #hour_con {
+  #daily_con #daily_con, #daily_con #hour_con, #hour_con #daily_con, #hour_con #hour_con {
     height: auto;
     flex-wrap: wrap;
     font-size: 16px;
   }
 }
 
-#daily_con div,
-#hour_con div {
+#daily_con div, #hour_con div {
   height: 25vh;
   width: 20vw;
   display: flex;
@@ -74,12 +69,12 @@ header {
   color: #000;
   margin: 0 2% 0 2%;
   font-size: 20px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
 }
 @media only screen and (max-width: 768px) {
-  #daily_con div #daily_con div,
-  #daily_con div #hour_con div,
-  #hour_con div #daily_con div,
-  #hour_con div #hour_con div {
+  #daily_con div #daily_con div, #daily_con div #hour_con div, #hour_con div #daily_con div, #hour_con div #hour_con div {
     height: 15vh;
     width: 45%;
     margin: 0 1% 5% 1%;

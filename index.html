@@ -17,8 +17,8 @@
     <div class="header">
         <header id="header_in">
             <label for="city-input"></label>
-            <input type="text" id="city-input" onkeydown="if (event.keyCode === 13) searchCity()">
-            <button onclick="searchCity()">Search</button>
+            <input type="text" id="city-input" placeholder="Search bar (Cities)"
+                   onkeydown="if (keyCode === 13) searchCity()">
             <div id="city-info"></div>
         </header>
         <div class="select_city"></div>
@@ -26,14 +26,9 @@
     </div>
     <div class="container">
         <div id="current_wea">
-            <h2>current Weather</h2>
+            <h2>Current Weather</h2>
             <div id="con_wea">
-                <div>City Name</div>
-                <i id="icon_curren" href=""></i>
-                <h2>c#</h2>
-                <div class="con_info">
-                    <div>Weather info</div>
-                </div>
+                <script src="current_weather.js"></script>
             </div>
         </div>
         <div id="daily_fore">

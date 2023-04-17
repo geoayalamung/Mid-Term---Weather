@@ -1,51 +1,31 @@
-let WEATHER_API_KEY = '2276fd31f84ab4e336dd35dc2ebebbcc';
+let WEATHER_API_KEY_1 = '2276fd31f84ab4e336dd35dc2ebebbcc';
 
-function findMode(array) {
-    if (array.length === 0)
-        return null;
-    var modeMap = {};
-    var maxEl = array[0], maxCount = 1;
-    for (var i = 0; i < array.length; i++) {
-        var el = array[i];
-        if (modeMap[el] == null)
-            modeMap[el] = 1;
-        else
-            modeMap[el]++;
-        if (modeMap[el] > maxCount) {
-            maxEl = el;
-            maxCount = modeMap[el];
-        }
+let longitude;
+let latitude;
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        console.log("Geolocation is not supported by this browser.");
     }
-    return maxEl;
 }
 
-const cityInput = document.getElementById('city-input');
-cityInput.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') {
-        searchCity().then(r => console.log(r));
-    }
-});
-
-async function searchCity() {
-    let longitude;
-    let latitude;
-    let timezone;
-    let country;
-
-    const cityInput = document.getElementById("city-input").value;
-    await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${WEATHER_API_KEY}`)
+function showPosition(position) {
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${WEATHER_API_KEY}`)
         .then(response => response.json())
         .then(data => {
-            longitude = data.coord.lon;
-            latitude = data.coord.lat;
-            timezone = data.timezone;
-            country = data.sys.country;
+            document.getElementById(`con_wea`).innerHTML = `<img src=\"https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png" width=\\"150px\\" height=\\"150px\\" alt="weather logo"> 
+                <p>Temp: ${data.main.temp}°C</p> 
+                <p>Humidity: ${data.main.humidity}%</p>`
         })
         .catch(error => {
             console.error("Error fetching city information:", error);
         });
 
-    await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${WEATHER_API_KEY}`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${WEATHER_API_KEY}`)
         .then(response => response.json())
         .then(data => {
             for (let i = 0; i < data.list.length; i++) {
@@ -102,3 +82,5 @@ async function searchCity() {
             }
         })
 }
+
+getLocation();
