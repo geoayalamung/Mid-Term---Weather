@@ -3,13 +3,13 @@ body {
   height: 100vh;
   font-family: "Montserrat", sans-serif;
 }
+
 @media only screen and (max-width: 768px) {
   body {
     height: auto;
     overflow-x: hidden;
   }
 }
-
 #bg-video {
   position: fixed;
   top: 50%;
@@ -33,15 +33,17 @@ header {
   margin: 5%;
   padding-bottom: 0;
 }
+
 @media only screen and (max-width: 768px) {
-  .main_sec .main_sec {
+  .main_sec {
     margin: 0;
     padding-bottom: 5%;
   }
 }
-
-#daily_con, #hour_con {
-  height: 30vh;
+#daily_con,
+#hour_con {
+  height: 40vh;
+  width: 100%;
   display: flex;
   flex-direction: row;
   font-size: 10px;
@@ -51,17 +53,21 @@ header {
   border-radius: 10px;
   margin: 0 2% 0 2%;
 }
+
 @media only screen and (max-width: 768px) {
-  #daily_con #daily_con, #daily_con #hour_con, #hour_con #daily_con, #hour_con #hour_con {
+  #daily_con,
+  #hour_con {
     height: auto;
     flex-wrap: wrap;
     font-size: 16px;
+    justify-content: center;
+    border: 5px solid rgb(47, 60, 78);
   }
 }
-
-#daily_con div, #hour_con div {
-  height: 25vh;
-  width: 20vw;
+#daily_con div,
+#hour_con div {
+  height: 40vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,16 +78,18 @@ header {
   flex-direction: column;
   flex-wrap: nowrap;
   align-content: center;
+  text-align: justify;
 }
+
 @media only screen and (max-width: 768px) {
-  #daily_con div #daily_con div, #daily_con div #hour_con div, #hour_con div #daily_con div, #hour_con div #hour_con div {
+  #daily_con div,
+  #hour_con div {
     height: 15vh;
     width: 45%;
     margin: 0 1% 5% 1%;
     font-size: 14px;
   }
 }
-
 #con_wea {
   height: 30vh;
   border: solid 5px;
@@ -90,14 +98,14 @@ header {
   border-radius: 10px;
   align-items: center;
 }
+
 @media only screen and (max-width: 768px) {
-  #con_wea #con_wea {
+  #con_wea {
     height: auto;
     padding-top: 5%;
     padding-bottom: 5%;
   }
 }
-
 h2 {
   margin-bottom: 0;
   font-size: 20px;

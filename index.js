@@ -33,12 +33,14 @@ async function searchCity() {
     let country;
 
     const cityInput = document.getElementById("city-input").value;
-    await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${WEATHER_API_KEY}`)
+    await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=metric&appid=${WEATHER_API_KEY}`)
         .then(response => response.json())
         .then(data => {
-            document.getElementById(`con_wea`).innerHTML = `<img src=\"https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png" width=\\"150px\\" height=\\"150px\\" alt="weather logo"> 
-                <p>Temp: ${data.main.temp}°C</p> 
-                <p>Humidity: ${data.main.humidity}%</p>`
+            document.getElementById(`con_wea`).innerHTML = `${data.name}, ${data.sys.country}<img src=\"https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" width=\\"125px\\" height=\\"125px\\" alt="weather logo"> <br>
+                ${data.weather[0].description}<br>
+                Temp: ${data.main.temp}°C<br>
+                H: ${data.main.temp_max}°C, L: ${data.main.temp_min}°C<br>
+                Humidity: ${data.main.humidity}%<br>`
             longitude = data.coord.lon;
             latitude = data.coord.lat;
             timezone = data.timezone;
